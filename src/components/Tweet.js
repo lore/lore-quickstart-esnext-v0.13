@@ -8,7 +8,7 @@ import { connect } from 'lore-hook-connect';
 
   return {
     user: getState('user.byId', {
-      id: tweet.data.userId
+      id: tweet.data.user
     })
   };
 })
