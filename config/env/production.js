@@ -25,4 +25,8 @@ export default {
   //   }
   // }
 
+  auth0: {
+    redirectUri: 'https://lore-quickstart.now.sh/auth/callback'
+  }
+
 }
