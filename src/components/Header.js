@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
+import CreateButton from './CreateButton';
 
 class Header extends React.Component {
 
@@ -13,6 +14,7 @@ class Header extends React.Component {
               Lore Quickstart
             </Link>
           </div>
+          <CreateButton/>
         </div>
       </nav>
     );
