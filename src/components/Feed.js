@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'lore-hook-connect';
 import Tweet from './Tweet';
 
+@connect(function(getState, props) {
+  return {
+    tweets: getState('tweet.find')
+  };
+})
 class Feed extends React.Component {
 
   static propTypes = {
