@@ -5,8 +5,15 @@ import PayloadStates from '../constants/PayloadStates';
 import Tweet from './Tweet';
 
 @connect(function(getState, props) {
+  const { location } = props;
+
   return {
-    tweets: getState('tweet.find')
+    tweets: getState('tweet.find', {
+      pagination: {
+        sort: 'createdAt DESC',
+        page: location.query.page || '1'
+      }
+    })
   };
 })
 class Feed extends React.Component {
