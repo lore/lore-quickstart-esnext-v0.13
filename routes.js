@@ -16,10 +16,12 @@ import Layout from './src/components/Layout';
 import Feed from './src/components/Feed';
 import Login from './src/components/Login';
 import AuthCallback from './src/components/AuthCallback';
+import Logout from './src/components/Logout';
 
 export default (
   <Route>
     <Route path="/login" component={Login} />
+    <Route path="/logout" component={Logout} />
     <Route path="/auth/callback" component={AuthCallback} />
 
     <Route component={UserIsAuthenticated(Master)}>

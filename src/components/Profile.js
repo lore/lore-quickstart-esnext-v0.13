@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 
 class Profile extends React.Component {
 
@@ -37,9 +38,9 @@ class Profile extends React.Component {
               <li>Delete your own tweets</li>
             </ul>
           </div>
-          <button className="btn btn-primary">
+          <Link className="btn btn-primary" to="/logout">
             Log out
-          </button>
+          </Link>
         </div>
       </div>
     );
