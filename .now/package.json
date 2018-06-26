@@ -1,0 +1,9 @@
+{
+  "name": "lore-quickstart-esnext-v0.13",
+  "scripts": {
+    "start": "serve . --single"
+  },
+  "dependencies": {
+    "serve": "latest"
+  }
+}
