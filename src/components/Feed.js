@@ -23,6 +23,31 @@ class Feed extends React.Component {
     tweets: PropTypes.object.isRequired
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      tweets: props.tweets,
+      nextTweets: props.tweets
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const nextTweets = nextProps.tweets;
+
+    if (nextTweets.state === PayloadStates.FETCHING) {
+      this.setState({
+        nextTweets: nextTweets,
+        isFetching: true
+      });
+    } else {
+      this.setState({
+        tweets: nextTweets,
+        nextTweets: nextTweets,
+        isFetching: false
+      });
+    }
+  }
+
   renderTweet(tweet) {
     return (
       <Tweet key={tweet.id} tweet={tweet} />
@@ -40,9 +65,12 @@ class Feed extends React.Component {
   }
 
   render() {
-    const { tweets } = this.props;
-    const currentPage = tweets.query.pagination.page;
+    const { tweets, nextTweets } = this.state;
+    const currentPage = nextTweets.query.pagination.page;
     const paginationLinks = [];
+
+    // check if we're fetching the next page of tweets
+    const isFetchingNextTweets = nextTweets.state === PayloadStates.FETCHING;
 
     if (tweets.state === PayloadStates.FETCHING) {
       return (
@@ -67,7 +95,7 @@ class Feed extends React.Component {
         <h2 className="title">
           Feed
         </h2>
-        <ul className="media-list tweets">
+        <ul className={`media-list tweets ${isFetchingNextTweets ? 'transition' : ''}`}>
           {tweets.data.map(this.renderTweet)}
         </ul>
         <nav>
