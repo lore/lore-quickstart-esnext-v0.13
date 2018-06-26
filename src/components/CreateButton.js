@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CreateTweetDialog from './CreateTweetDialog';
 
 class CreateButton extends React.Component {
 
@@ -11,7 +12,7 @@ class CreateButton extends React.Component {
   onClick() {
     lore.dialog.show(function() {
       return (
-        <h1>Dialog Placeholder</h1>
+        <CreateTweetDialog />
       );
     });
   }
