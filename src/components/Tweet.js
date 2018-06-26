@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { connect } from 'lore-hook-connect';
+import EditLink from './EditLink';
 
 @connect(function(getState, props) {
   const tweet = props.tweet;
@@ -40,6 +41,9 @@ class Tweet extends React.Component {
           <p className="list-group-item-text text">
             {tweet.data.text}
           </p>
+          <div className="tweet-actions">
+            <EditLink tweet={tweet} />
+          </div>
         </div>
       </li>
     );
