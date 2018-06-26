@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'lore-hook-connect';
+import { Link } from 'react-router';
 import PayloadStates from '../constants/PayloadStates';
 import Tweet from './Tweet';
 
@@ -28,8 +29,20 @@ class Feed extends React.Component {
     );
   }
 
+  renderPaginationLink(page, currentPage) {
+    return (
+      <li key={page} className={currentPage === String(page) ? 'active' : ''}>
+        <Link to={{ pathname: '/', query: { page: page } }}>
+          {page}
+        </Link>
+      </li>
+    );
+  }
+
   render() {
     const { tweets } = this.props;
+    const currentPage = tweets.query.pagination.page;
+    const paginationLinks = [];
 
     if (tweets.state === PayloadStates.FETCHING) {
       return (
@@ -42,6 +55,13 @@ class Feed extends React.Component {
       );
     }
 
+    // calculate the number of pagination links from our metadata, then
+    // generate an array of pagination links
+    const numberOfPages = Math.ceil(tweets.meta.totalCount / tweets.meta.perPage);
+    for (let pageNumber = 1; pageNumber <= numberOfPages; pageNumber++) {
+      paginationLinks.push(this.renderPaginationLink(pageNumber, currentPage));
+    }
+
     return (
       <div className="feed">
         <h2 className="title">
@@ -50,6 +70,11 @@ class Feed extends React.Component {
         <ul className="media-list tweets">
           {tweets.data.map(this.renderTweet)}
         </ul>
+        <nav>
+          <ul className="pagination">
+            {paginationLinks}
+          </ul>
+        </nav>
       </div>
     );
   }
