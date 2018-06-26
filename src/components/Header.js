@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 
 class Header extends React.Component {
 
@@ -8,9 +9,9 @@ class Header extends React.Component {
       <nav className="navbar navbar-default navbar-static-top header">
         <div className="container">
           <div className="navbar-header">
-            <div className="navbar-brand">
+            <Link className="navbar-brand" to="/">
               Lore Quickstart
-            </div>
+            </Link>
           </div>
         </div>
       </nav>
