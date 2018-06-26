@@ -17,6 +17,7 @@
 
 import PropTypes from 'prop-types';
 import { AuthenticationGenerator } from 'lore-auth';
+import auth from '../utils/auth';
 
 export default AuthenticationGenerator({
 
@@ -30,7 +31,7 @@ export default AuthenticationGenerator({
   },
 
   isAuthenticated() {
-    return true;
+    return auth.hasToken();
   }
 
 });
