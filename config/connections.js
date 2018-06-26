@@ -147,7 +147,8 @@ export default {
         parse: function(response) {
           this.meta = {
             totalCount: response.meta.paginate.totalCount,
-            perPage: response.meta.paginate.perPage
+            perPage: response.meta.paginate.perPage,
+            nextPage: response.meta.paginate.nextPage
           };
           return response.data;
         }
