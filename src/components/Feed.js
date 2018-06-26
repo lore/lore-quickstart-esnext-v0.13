@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import moment from 'moment';
+import PayloadStates from '../constants/PayloadStates';
 import InfiniteScrollingList from './InfiniteScrollingList';
 import Tweet from './Tweet';
 
@@ -35,6 +36,9 @@ class Feed extends React.Component {
               pagination: {
                 sort: 'createdAt DESC',
                 page: 1
+              },
+              exclude: function(tweet) {
+                return tweet.state === PayloadStates.DELETED;
               }
             });
           }}
@@ -44,7 +48,11 @@ class Feed extends React.Component {
             );
           }}
           refresh={(page, getState) => {
-            return getState('tweet.find', page.query);
+            return getState('tweet.find', _.defaultsDeep({
+              exclude: function(tweet) {
+                return tweet.state === PayloadStates.DELETED;
+              }
+            }, page.query));
           }}
           selectNextPage={(lastPage, getState) => {
             const lastPageNumber = lastPage.query.pagination.page;
@@ -52,6 +60,9 @@ class Feed extends React.Component {
             return getState('tweet.find', _.defaultsDeep({
               pagination: {
                 page: lastPageNumber + 1
+              },
+              exclude: function(tweet) {
+                return tweet.state === PayloadStates.DELETED;
               }
             }, lastPage.query));
           }}
@@ -64,6 +75,9 @@ class Feed extends React.Component {
               },
               sortBy: function(model) {
                 return -moment(model.data.createdAt).unix();
+              },
+              exclude: function(tweet) {
+                return tweet.state === PayloadStates.DELETED;
               }
             });
           }}
