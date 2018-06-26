@@ -40,7 +40,7 @@ class Feed extends React.Component {
           }}
           row={(tweet) => {
             return (
-              <Tweet key={tweet.id} tweet={tweet} />
+              <Tweet key={tweet.id || tweet.cid} tweet={tweet} />
             );
           }}
           refresh={(page, getState) => {
@@ -58,9 +58,9 @@ class Feed extends React.Component {
           selectOther={(getState) => {
             return getState('tweet.all', {
               where: function(tweet) {
-                const isReal = tweet.id;
+                const isOptimistic = !tweet.id;
                 const isNew = moment(tweet.data.createdAt).diff(timestamp) > 0;
-                return isReal && isNew;
+                return isOptimistic || isNew;
               },
               sortBy: function(model) {
                 return -moment(model.data.createdAt).unix();
