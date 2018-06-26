@@ -17,6 +17,7 @@ import Feed from './src/components/Feed';
 import Login from './src/components/Login';
 import AuthCallback from './src/components/AuthCallback';
 import Logout from './src/components/Logout';
+import UserTweets from './src/components/UserTweets';
 
 export default (
   <Route>
@@ -27,6 +28,7 @@ export default (
     <Route component={UserIsAuthenticated(Master)}>
       <Route path="/" component={Layout}>
         <IndexRoute component={Feed} />
+        <Route path="users/:userId" component={UserTweets} />
       </Route>
     </Route>
   </Route>
