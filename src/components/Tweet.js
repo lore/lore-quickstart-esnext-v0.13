@@ -5,11 +5,23 @@ import moment from 'moment';
 class Tweet extends React.Component {
 
   static propTypes = {
-    tweet: PropTypes.object.isRequired
+    tweet: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired
+  };
+
+  static defaultProps = {
+    user: {
+      id: 1,
+      data: {
+        id: 1,
+        nickname: "lucca",
+        avatar: "https://cloud.githubusercontent.com/assets/2637399/19027072/a36f0c7a-88e1-11e6-931e-7f67fe01367b.png"
+      }
+    }
   };
 
   render() {
-    const { tweet } = this.props;
+    const { tweet, user } = this.props;
     const timestamp = moment(tweet.data.createdAt).fromNow().split(' ago')[0];
 
     return (
@@ -17,11 +29,11 @@ class Tweet extends React.Component {
         <div className="image-container">
           <img
             className="img-circle avatar"
-            src={'http://ssl.gstatic.com/images/icons/material/product/1x/avatar_circle_blue_120dp.png'} />
+            src={user.data.avatar} />
         </div>
         <div className="content-container">
           <h4 className="list-group-item-heading title">
-            Nickname
+            {user.data.nickname}
           </h4>
           <h4 className="list-group-item-heading timestamp">
             {'- ' + timestamp}
