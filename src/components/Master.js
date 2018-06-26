@@ -18,40 +18,33 @@ import '../../assets/css/main.css';
 
 @connect(function(getState, props) {
   return {
-    // user: getState('currentUser')
+    user: getState('currentUser')
   };
 }, { subscribe: true })
 class Master extends React.Component {
 
-  // static propTypes = {
-  //   user: PropTypes.object.isRequired
-  // };
+  static propTypes = {
+    user: PropTypes.object.isRequired
+  };
 
-  // static childContextTypes = {
-  //   user: PropTypes.object
-  // };
+  static childContextTypes = {
+    user: PropTypes.object
+  };
 
-  // getChildContext() {
-  //   return {
-  //     user: this.props.user
-  //   };
-  // }
-
-  componentDidMount() {
-    // If you want to play with the router through the browser's dev console then
-    // uncomment out this line. React Router automatically provides 'router'
-    // to any components that are "routes" (such as Master and Layout), so this
-    // is a good location to attach it to the global lore object.
-
-    // lore.router = this.props.router;
+  getChildContext() {
+    return {
+      user: this.props.user
+    };
   }
 
   render() {
-    // const { user } = this.props;
+    const { user } = this.props;
 
-    // if (user.state === PayloadStates.FETCHING) {
-    //   return null;
-    // }
+    if (user.state === PayloadStates.FETCHING) {
+      return (
+        <div className="loader" />
+      );
+    }
 
     return (
       <div>

@@ -4,22 +4,12 @@ import { Link } from 'react-router';
 
 class Profile extends React.Component {
 
-  static propTypes = {
+  static contextTypes = {
     user: PropTypes.object.isRequired
   };
 
-  static defaultProps = {
-    user: {
-      id: 1,
-      data: {
-        nickname: 'ayla',
-        avatar: 'https://cloud.githubusercontent.com/assets/2637399/19027069/a356e82a-88e1-11e6-87d8-e3e74f55c069.png'
-      }
-    }
-  };
-
   render() {
-    const { user } = this.props;
+    const { user } = this.context;
 
     return (
       <div className="card profile">
