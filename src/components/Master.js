@@ -37,6 +37,15 @@ class Master extends React.Component {
     };
   }
 
+  componentDidMount() {
+    lore.websockets.tweet.connect();
+    lore.websockets.tweet.subscribe();
+  }
+
+  componentWillUnmount() {
+    lore.websockets.tweet.unsubscribe();
+  }
+
   render() {
     const { user } = this.props;
 

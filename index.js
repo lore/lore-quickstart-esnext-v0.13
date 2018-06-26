@@ -31,6 +31,7 @@ import react from 'lore-hook-react';
 import reducers from 'lore-hook-reducers';
 import redux from 'lore-hook-redux';
 import router from 'lore-hook-router';
+import websockets from 'lore-hook-websockets-sails';
 
 // Summon the app!
 lore.summon({
@@ -49,6 +50,7 @@ lore.summon({
     redux: _.extend(redux, {
       dependencies: ['reducers', 'auth']
     }),
-    router
+    router,
+    websockets
   }
 });

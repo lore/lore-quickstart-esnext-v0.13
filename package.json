@@ -38,6 +38,7 @@
     "lore-hook-reducers": "~0.13.0-rc",
     "lore-hook-redux": "~0.13.0-rc",
     "lore-hook-router": "~0.13.0-rc",
+    "lore-hook-websockets-sails": "^0.13.0",
     "lore-utils": "~0.13.0-rc",
     "moment": "^2.22.2",
     "prop-types": "^15.6.0",
@@ -47,7 +48,9 @@
     "react-router": "^3.0.0",
     "redux": "^3.0.2",
     "redux-batched-subscribe": "^0.1.6",
-    "redux-thunk": "^2.0.1"
+    "redux-thunk": "^2.0.1",
+    "sails.io.js": "^0.13.8",
+    "socket.io-client": "^1.7.4"
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",
