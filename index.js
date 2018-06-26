@@ -25,6 +25,7 @@ import collections from 'lore-hook-collections';
 import connections from 'lore-hook-connections';
 import connect from 'lore-hook-connect';
 import dialog from 'lore-hook-dialog-bootstrap';
+import dialogs from 'lore-hook-dialogs-bootstrap';
 import models from 'lore-hook-models';
 import react from 'lore-hook-react';
 import reducers from 'lore-hook-reducers';
@@ -41,6 +42,7 @@ lore.summon({
     connections,
     connect,
     dialog,
+    dialogs,
     models,
     react,
     reducers,

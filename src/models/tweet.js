@@ -1,5 +1,30 @@
 export default {
 
+  dialogs: {
+    create: {
+      data: {
+        text: ''
+      },
+      validators: {
+        text: [function(value) {
+          if (!value) {
+            return 'This field is required';
+          }
+        }]
+      },
+      fields: [
+        {
+          key: 'text',
+          type: 'text',
+          props: {
+            label: 'Message',
+            placeholder: "What's happening?"
+          }
+        }
+      ]
+    }
+  },
+
   properties: {
 
     /**
