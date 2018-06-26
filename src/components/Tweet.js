@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { connect } from 'lore-hook-connect';
+import PayloadStates from '../constants/PayloadStates';
 import EditLink from './EditLink';
 import DeleteLink from './DeleteLink';
 import IsOwner from './IsOwner';
@@ -25,9 +26,14 @@ class Tweet extends React.Component {
   render() {
     const { tweet, user } = this.props;
     const timestamp = moment(tweet.data.createdAt).fromNow().split(' ago')[0];
+    const isOptimistic = (
+      tweet.state === PayloadStates.CREATING ||
+      tweet.state === PayloadStates.UPDATING ||
+      tweet.state === PayloadStates.DELETING
+    );
 
     return (
-      <li className="list-group-item tweet">
+      <li className={"list-group-item tweet" + (isOptimistic ? " transition" : "")}>
         <div className="image-container">
           <img
             className="img-circle avatar"
