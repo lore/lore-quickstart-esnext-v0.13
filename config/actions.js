@@ -36,7 +36,7 @@ export default {
    * broadcasted by the server.
    */
 
-  // addCidToBody: false,
+  addCidToBody: true,
 
   /**
    * This field let's you change the name of the cid field sent to the server

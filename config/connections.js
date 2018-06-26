@@ -3,6 +3,7 @@
  *
  * This file is where you define overrides for the default collection behaviors.
  */
+import uuid from 'node-uuid';
 import auth from '../src/utils/auth';
 
 export default {
@@ -107,9 +108,9 @@ export default {
          * https://github.com/kelektiv/node-uuid
          */
 
-        // generateCid: function() {
-        //   return _.uniqueId('c');
-        // },
+        generateCid: function() {
+          return uuid.v4();
+        }
 
         /**
          * Use this function to transform the server response before using it

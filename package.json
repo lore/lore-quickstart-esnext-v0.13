@@ -41,6 +41,7 @@
     "lore-hook-websockets-sails": "^0.13.0",
     "lore-utils": "~0.13.0-rc",
     "moment": "^2.22.2",
+    "node-uuid": "^1.4.8",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.0.0",
