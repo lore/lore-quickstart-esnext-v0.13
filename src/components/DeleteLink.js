@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import UserCanDeleteTweet from '../decorators/UserCanDeleteTweet';
 
+@UserCanDeleteTweet
 class DeleteLink extends React.Component {
 
   static propTypes = {
