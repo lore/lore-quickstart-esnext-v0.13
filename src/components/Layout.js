@@ -8,6 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import Profile from './Profile';
+import Filter from './Filter';
 
 class Layout extends React.Component {
 
@@ -19,6 +20,7 @@ class Layout extends React.Component {
           <div className="row">
             <div className="col-md-3">
               <Profile />
+              <Filter />
             </div>
             <div className="col-md-offset-1 col-md-6">
               {React.cloneElement(this.props.children)}
