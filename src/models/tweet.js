@@ -23,6 +23,13 @@ const fields = {
 
 export default {
 
+  attributes: {
+    user: {
+      type: 'model',
+      model: 'user'
+    }
+  },
+
   dialogs: {
     create: fields,
     update: fields

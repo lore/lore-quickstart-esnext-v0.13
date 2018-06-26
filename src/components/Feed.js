@@ -35,7 +35,8 @@ class Feed extends React.Component {
               },
               pagination: {
                 sort: 'createdAt DESC',
-                page: 1
+                page: 1,
+                populate: 'user'
               },
               exclude: function(tweet) {
                 return tweet.state === PayloadStates.DELETED;
